@@ -14,7 +14,7 @@ nav{
   font-weight: bold;
   position:sticky;
   top:0;
-  background-color: #FFC107;
+  background-color: #ffab00;
   width: 100%;
   height: 75px;
   z-index: 3;
@@ -59,7 +59,7 @@ nav>ul{
   right:0;
   width: 100%;
   height: 100%;
-  background-color: #FFC107;
+  background-color: #ffab00;
   opacity: 0.3;
 }
 .text{
