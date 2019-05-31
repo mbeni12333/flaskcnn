@@ -2,11 +2,8 @@ Flask==1.0.2
 Flask-Cors==3.0.4
 numpy==1.14.3
 numpydoc==0.8.0
-tensorboard==1.8.0
-tensorflow==1.8.0
 torch==1.0.0
 torchvision==0.2.1
-tornado==5.0.2
 matplotlib==2.2.2
 pickleshare==0.7.4
 Pillow==5.1.0
