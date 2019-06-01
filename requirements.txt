@@ -1,4 +1,4 @@
 Flask==1.0.2
-pytorch==1.0.0
+torch==1.0.0
 Pillow==5.1.0
 gunicorn==19.9.0
