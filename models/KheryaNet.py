@@ -49,7 +49,7 @@ class KheryaNet(nn.Module):
 
 		data=base64.b64decode(data)
 		image_data=BytesIO(data)
-		img=Image.open(image_data)
+		img=Image.open(image_data).convert("RGB")
 		img = img.resize((28, 28), Image.BICUBIC)
 		#img.save("kherya","PNG")
 		return data
