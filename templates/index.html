@@ -22,11 +22,11 @@
     </div>
     <nav>
         <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#technology">Technology</a></li>
-            <li><a href="#how">How</a></li>
-            <li><a href="#demo">Demo</a></li>
-            <li><a href="#conclusion">Conclusion</a></li>
+            <li class="selected"    ><a href="#">HOME<span></span></a></li>
+            <li ><a href="#technology" >Technology<span></span></a></li>
+            <li><a href="#how">How <span></span></a></li>
+            <li><a href="#demo">Demo <span></span></a></li>
+            <li><a href="#conclusion">Conclusion <span></span></a></li>
         </ul>
     </nav>
     <div class="demotxt">
@@ -47,7 +47,7 @@
         <div class="card"><img src="../static/img/html.png" class="card_logo"/>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum vel, adipisci harum mollitia, commodi cum dolore dolores et ratione temporibus neque qui! Esse, repudiandae. Itaque minima doloremque accusantium voluptatum, molestias?</p>
         </div>
-        <div class="card"><img src="../static/img/jupyter.png" class="card_logo"/>
+        <div class="card"><img src="../static/img/json.png" class="card_logo"/>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum vel, adipisci harum mollitia, commodi cum dolore dolores et ratione temporibus neque qui! Esse, repudiandae. Itaque minima doloremque accusantium voluptatum, molestias?</p>
         </div>
         <div class="card"><img src="../static/img/pickle.png" class="card_logo"/>
@@ -186,6 +186,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="../static/js/pie.js"></script>
     <script src="../static/js/predict.js"></script>
+    <script>
+        
+        $("li").click(function(){
+            $(".selected").removeClass("selected");
+            $(this).addClass("selected");
+        });
+    </script>
 </body>
 
 </html>

@@ -7,7 +7,6 @@ ctx.lineWidth = 20;
 ctx.lineCap =  "round";
 var clear = document.getElementById("clear_btn");
 
-
 // Set up mouse events for drawing
 var drawing = false;
 var mousePos = { x:0, y:0 };
