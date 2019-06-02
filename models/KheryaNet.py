@@ -1,16 +1,15 @@
 import base64
 from io import BytesIO
-import torch
+
 import torch.nn as nn
 import torch.nn.functional as F
 from PIL import Image
+from torchvision import transforms
 
 
 class KheryaNet(nn.Module):
-	instance=None
 
 	def __init__(self):
-
 		# initiliase the parent class
 		super(KheryaNet, self).__init__()
 
@@ -31,7 +30,6 @@ class KheryaNet(nn.Module):
 		                              nn.LogSoftmax(dim=1))
 
 	def forward(self, x):
-
 		x=F.relu(self.conv1(x))
 		x=self.batchnorm1(x)
 		x=F.relu(self.conv2(x))
@@ -44,26 +42,20 @@ class KheryaNet(nn.Module):
 
 		return x
 
-	@staticmethod
-	def preprocess(data):
 
-		data=base64.b64decode(data)
-		image_data=BytesIO(data)
-		img=Image.open(image_data).convert("RGB")
-		img = img.resize((28, 28), Image.BICUBIC)
-		#img.save("kherya","PNG")
-		return data
+def preprocess(data):
+	data=base64.b64decode(data)
+	image_data=BytesIO(data)
+	img=Image.open(image_data)
+	img=img.point(lambda x: 255 if x>0  else 0, '1')
+	# img=img.filter(ImageFilter.GaussianBlur(2))
+	img=img.resize((28, 28), Image.BILINEAR, '1')
+	#background=Image.new("RGB", img.size, (255, 255, 255))
 
-	@staticmethod
-	def getInstance(file=None):
+	#background.paste(img, mask=img.split()[3])
 
-		if KheryaNet.instance==None:
-			if file:
-				model=torch.load(file, map_location="cpu")
-				model.eval()
-			else:
-				model=KheryaNet()
-
-			KheryaNet.instance=model
-
-		return KheryaNet.instance
+	img.save("kherya.png", "PNG")
+	transformed=transforms.ToTensor()(img)
+	transformed=transformed/255.0
+	transformed=transformed.unsqueeze(0)
+	return transformed

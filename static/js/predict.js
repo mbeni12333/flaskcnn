@@ -2,7 +2,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 $("#predict_btn").click(function(){
-    var data = canvas.toDataURL("image/jpeg");
+    var data = canvas.toDataURL("image/png");
     data = data.substr(data.indexOf(',') + 1);
     $.ajax({
     type:'POST',     
