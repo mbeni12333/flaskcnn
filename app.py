@@ -1,7 +1,6 @@
 import os
 from models.preprocess import preprocess
 import torch
-import matplotlib.pyplot as plt
 from flask import Flask, jsonify, render_template, request
 
 from models.KheryaNet import KheryaNet
