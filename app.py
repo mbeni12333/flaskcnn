@@ -36,9 +36,13 @@ def predict():
 	with torch.no_grad():
 		out = model.forward(data)
 		out = torch.exp(out)
-		top_pbs , top_classes = out.topk(1, dim=1)
-	print(label[top_classes[0].item()])
-	d = {"class":label[top_classes[0].item()], "prob":top_pbs[0].item()}
+		top_pbs , top_classes = out.topk(5, dim=1)
+	#print(label[top_classes[0].item()])
+	keys = [str(label[i.item()]) for i in top_classes[0]]
+	values = [i.item() for i in top_pbs[0]]
+	d = dict(zip(keys, values))
+	print(d)
+	print(top_classes[0])
 	#dict(zip(top_classes, top_pbs))
 	# encode json
 
@@ -50,4 +54,4 @@ def predict():
 
 if __name__=="__main__":
 	port=int(os.environ.get('PORT', 5000))
-	app.run(host='0.0.0.0', port=port)
+	app.run(host='127.0.0.1', port=port)
